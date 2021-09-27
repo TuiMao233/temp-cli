@@ -4,6 +4,7 @@
 ## Cli
 
 ```sh
+npm i templa-cli
 npx templa-cli --input template --output out-template
 ```
 

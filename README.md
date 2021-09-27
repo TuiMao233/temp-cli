@@ -3,9 +3,12 @@ Export the template directory to the specified directory and provide dynamic out
 
 [中文文档](./README_CN.md)
 
+
+
 ## Cli
 
 ```bash
+npm i templa-cli
 npx templa-cli --input template --output out-template
 ```
 
