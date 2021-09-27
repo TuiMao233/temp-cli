@@ -22,7 +22,7 @@ npx templa-cli --input template --output out-template
 解析规则是文件名以 ^ 开头，以 $ 结尾, 内容解析使用 [qs](https://github.com/ljharb/qs) 解析.
 
 ~~~
-# input template
+# 输出的模板
 - template
   - routes^includes=router,xxx$
   - app.ts
@@ -36,7 +36,7 @@ npx templa-cli --input template --output out-template
 ~~~
 
 ~~~
-# output template
+# 输出的模板
 - template
   - app.ts
   - tsconfig.josn
