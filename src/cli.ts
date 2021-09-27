@@ -1,4 +1,4 @@
-import klaw from 'klaw'
+import klaw, { Item } from 'klaw'
 import fs from 'fs-extra'
 import ejs from 'ejs'
 import path from 'path'
@@ -11,7 +11,7 @@ export interface TemplateCliConfig {
   includes?: string[]
 }
 
-export function createTemplate(config: TemplateCliConfig) {
+export async function createTemplate(config: TemplateCliConfig) {
   if (!path.isAbsolute(config.input)) config.input = path.resolve(config.input)
   if (!path.isAbsolute(config.output)) config.output = path.resolve(config.output)
   if (!config.includes) config.includes = []
@@ -19,7 +19,8 @@ export function createTemplate(config: TemplateCliConfig) {
 
   const { input, output, includes } = config
 
-  klaw(input).on('data', (item) => {
+  for await (const _item of klaw(input)) {
+    const item: Item = _item
     if (item.stats.isDirectory()) return
 
     // 1. get file name parmas
@@ -41,6 +42,6 @@ export function createTemplate(config: TemplateCliConfig) {
       output,
       relativePath.replace('.ejs', '').replace(/\^([^\\]*)\$/g, '')
     )
-    fs.outputFile(outFilePath, content, { flag: 'w' })
-  })
+    await fs.outputFile(outFilePath, content, { flag: 'w' })
+  }
 }
