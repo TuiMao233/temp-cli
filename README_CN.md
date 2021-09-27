@@ -1,5 +1,5 @@
 # templa-cli
-将模板目录导出到指定目录，并提供动态输出文件和文件内容。
+将模板目录导出到指定目录，并提供动态输出文件和文件内容的功能。
 
 ## Cli
 
@@ -23,7 +23,7 @@ npx templa-cli --input template --output out-template
 解析规则是文件名以 ^ 开头，以 $ 结尾, 内容解析使用 [qs](https://github.com/ljharb/qs) 解析.
 
 ~~~
-# input template
+# 输入的模板
 - template
   - routes^includes=router,xxx$
   - app.ts
@@ -37,7 +37,7 @@ npx templa-cli --input template --output out-template
 ~~~
 
 ~~~
-# output template
+# 输出的模板
 - template
   - app.ts
   - tsconfig.josn
