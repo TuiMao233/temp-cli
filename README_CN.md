@@ -1,39 +1,37 @@
 # templa-cli
-Export the template directory to the specified directory and provide dynamic output files and file contents.
-
-[中文文档](./README_CN.md)
+将模板目录导出到指定目录，并提供动态输出文件和文件内容。
 
 ## Cli
 
-```bash
+```sh
 npx templa-cli --input template --output out-template
 ```
 
 ### `--input <dir>`
 
-input dir path, Write the path you want to copy to the template here.
+输入目录路径，这里写下你要复制到模板的路径。
 
 ### `--output <dir>`
 
-output dir path, Write the template path you want to output here.
+输出目录路径，这里写下你要输出的模板路径。
 
 ### `--includes [type]`
 
-What are included in the output template.
+输出模板中包含哪些内容。
 
-The file name starts with ^ and ends with $, and the content parsing rules use [qs](https://github.com/ljharb/qs) to parse.
+解析规则是文件名以 ^ 开头，以 $ 结尾, 内容解析使用 [qs](https://github.com/ljharb/qs) 解析.
 
 ~~~
 # input template
 - template
-  - routes^includes=router$
+  - routes^includes=router,xxx$
   - app.ts
   - tsconfig.josn
   ....
 ~~~
 
 ~~~sh
-# No router
+# 案例: 不使用路由
 npx templa-cli --input template --output out-template
 ~~~
 
@@ -46,7 +44,7 @@ npx templa-cli --input template --output out-template
 ~~~
 
 ~~~sh
-# Use router
+# 案例: 使用路由
 npx templa-cli --input template --output out-template --includes router
 ~~~
 
@@ -64,7 +62,7 @@ npx templa-cli --input template --output out-template --includes router
 ~~~typescript
 import { createTemplate } from 'templa-cli'
 
-// Create a template and specify the output path
+// 创建模板并指定输出路径。
 createTemplate({
   input: 'template',
   output: 'out-template',
@@ -77,19 +75,19 @@ createTemplate({
 
 ### `input`
 
-The output path is consistent with `--input`.
+输入路径，与`--input`一致。
 
 ### `output`
 
-The output path is consistent with `--output`.
+输出路径，与`--output`一致。
 
 ### `options`
 
-Template configuration, such as project name, version number.
+模板选项，例如项目名称、版本号。
 
-The parsing engine of the template is [ejs](https://ejs.bootcss.com/#docs), you need to add .ejs to the file suffix when you use it, and .ejs will be removed after output.
+模板的解析引擎为[ejs](https://ejs.bootcss.com/#docs)，使用时需要在文件后缀中添加.ejs，输出后.ejs会被删除。
 
-The ejs engine receives a configuration by default, which contains options and includes.
+ejs 引擎默认接收一个配置，其中包含 `options` 和 `includes`。
 
 ~~~ejs
 <%# package.json %>

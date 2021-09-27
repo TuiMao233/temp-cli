@@ -1,0 +1,50 @@
+{
+  "name": "templa-cli",
+  "version": "0.0.1",
+  "description": "Export the template directory to the specified directory and provide dynamic output files and file contents.",
+  "main": "index.js",
+  "scripts": {
+    "build": "esno scripts/build.ts",
+    "bin": "esno src/bin/index.ts"
+  },
+  "bin": {
+    "templa-cli": "./bin/index.js"
+  },
+  "prettier": "@hairy/eslint/prettier",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/templa-cli.git"
+  },
+  "keywords": [
+    "template",
+    "cli",
+    "template-cli",
+    "temp",
+    "templa-cli"
+  ],
+  "author": "Mr.Mao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TuiMao233/templa-cli/issues"
+  },
+  "homepage": "https://github.com/TuiMao233/templa-cli#readme",
+  "dependencies": {
+    "@types/klaw": "^3.0.2",
+    "cac": "^6.7.3",
+    "consola": "^2.15.3",
+    "ejs": "^3.1.6",
+    "fs-extra": "^10.0.0",
+    "klaw": "^4.0.1",
+    "lodash": "^4.17.21",
+    "qs": "^6.10.1"
+  },
+  "devDependencies": {
+    "@hairy/eslint": "^1.0.0",
+    "@types/ejs": "^3.1.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/lodash": "^4.14.174",
+    "@types/node": "^16.10.1",
+    "@types/qs": "^6.9.7",
+    "esno": "^0.10.0"
+  }
+}
