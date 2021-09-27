@@ -21,7 +21,7 @@ export async function createTemplate(config: TemplateCliConfig) {
 
   for await (const _item of klaw(input)) {
     const item: Item = _item
-    if (item.stats.isDirectory()) return
+    if (item.stats.isDirectory()) continue
 
     // 1. get file name parmas
     const absolutePath = item.path
@@ -29,7 +29,7 @@ export async function createTemplate(config: TemplateCliConfig) {
     const parmas = parseFileParmas(relativePath)
 
     // 2. compare includes
-    if (!compareIncludes(includes, parmas.includes)) return
+    if (!compareIncludes(includes, parmas.includes)) continue
 
     // 3. If it is an ejs template, use ejs to render
     let content = fs.readFileSync(absolutePath, 'utf-8')

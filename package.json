@@ -1,6 +1,6 @@
 {
   "name": "templa-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Export the template directory to the specified directory and provide dynamic output files and file contents.",
   "main": "index.js",
   "scripts": {
